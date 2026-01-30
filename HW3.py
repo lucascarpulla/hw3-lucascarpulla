@@ -1,5 +1,5 @@
-# Name:
-# Student ID:
+# Name: Luca Scarpulla
+# Student ID: lucays
 # Email:
 # Who or what you worked with on this homework (including generative AI like ChatGPT):
 # If you worked with generative AI also add a statement for how you used it.
@@ -32,8 +32,9 @@ class CouponDispenser:
         Args:
             coupon_cards (list[str]): list of possible coupons users can receive.
         """
-        # TODO: Implement per instructions
-        pass
+        self.coupon_cards = coupon_cards
+        self.customer_roster = []
+        self.issued_indices = []
 
     def __str__(self):
         """
@@ -43,8 +44,9 @@ class CouponDispenser:
         Returns:
             str
         """
-        # TODO: Implement per instructions
-        pass
+        if not self.coupon_cards:
+            return ""
+        return "|".join(self.coupon_cards)
 
     def issue_coupon(self, name):
         """
@@ -60,8 +62,18 @@ class CouponDispenser:
         Returns:
             str: message as described above
         """
-        # TODO: Implement per instructions
-        pass
+        if not self.coupon_cards:
+            return "The box is empty."
+
+        if name in self.customer_roster:
+            idx = self.customer_roster.index(name)
+            coupon = self.coupon_cards[self.issued_indices[idx]]
+            return f"That name already has a coupon: {coupon}"
+
+        rand_index = random.randint(0, len(self.coupon_cards) - 1)
+        self.customer_roster.append(name)
+        self.issued_indices.append(rand_index)
+        return self.coupon_cards[rand_index]
 
     def distribute_session(self):
         """
@@ -78,8 +90,34 @@ class CouponDispenser:
 
         Reminder: Use lists only (no dictionaries).
         """
-        # TODO: Implement per instructions 
-        pass
+        round_number = 1
+
+        while True:
+            user_input = input(
+                f"Round {round_number} - Enter a name (or a comma-separated list), or "
+                f"type 'show' or 'exit': "
+            )
+
+            if user_input == "exit":
+                print("Goodbye!")
+                break
+
+            elif user_input == "show":
+                for i in range(len(self.customer_roster)):
+                    name = self.customer_roster[i]
+                    coupon = self.coupon_cards[self.issued_indices[i]]
+                    print(f"{name}: {coupon}")
+
+            else:
+                pieces = user_input.split(",")
+                for piece in pieces:
+                    name = piece.strip()
+                    if name != "":
+                        result = self.issue_coupon(name)
+                        print(result)
+
+            round_number += 1
+
 
     def tally_distribution(self):
         """
