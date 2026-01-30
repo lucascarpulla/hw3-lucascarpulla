@@ -1,12 +1,14 @@
 # Name: Luca Scarpulla
 # Student ID: lucays
-# Email:
-# Who or what you worked with on this homework (including generative AI like ChatGPT):
+# Email: lucays@umich.edu
+# Who or what you worked with on this homework (including generative AI like ChatGPT): Alone, Google, some GenAI
 # If you worked with generative AI also add a statement for how you used it.
-# e.g.:
-# Asked ChatGPT hints for debugging and suggesting the general structure of the code
+# Mmy use of GenAI for this HW was primarily just figuring out how to use Git and VSCode.
+# I figured out how to make commits, how to push the code, how to use terminal ("cd"), and how to add my username and email to the terminal.
+# I also used it for some debugs, having it help me through what went wrong.
 # Did your use of GenAI on this assignment align with your goals and guidelines in 
 #    your Gen AI contract? If not, why?
+# Yes!
 
 import random
 import io
